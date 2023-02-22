@@ -1,0 +1,21 @@
+{% extends "application/base.html" %}
+{% block title %}Index{% endblock title %}
+{% block header %}Главная страница{% endblock header%}
+{% block content %}
+
+<p>Категории продуктов</p>
+{% for i in cat %}
+        <li>{{i}}</li>
+    {% empty %} <!--empty list -->
+        <li>брах</li>
+{% endfor %}
+{% endblock content %}
+
+<!--<p>Анализ возраста клиента</p>-->
+
+<!--{% if age > 65 %}-->
+<!--    <p>Клиент достиг пенсионного возраста</p>-->
+<!--{% else %}-->
+<!--    <p>Клиент не достиг пенсионного возраста</p>-->
+<!--{% endif %}-->
+

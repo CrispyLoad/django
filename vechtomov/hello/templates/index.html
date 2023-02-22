@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Форма!</title>
+    <style>
+        .field{font-weight: bold;}
+        .error{color:red;}
+    </style>
+</head>
+<body>
+    <form method = "POST" action="create/">
+
+        {% csrf_token %}
+
+        <p>
+            <label>Введите имя</label>
+            <input type="text" name="name">
+        </p>
+
+        <p>
+            <label>Введите возраст</label>
+            <input type="number" name="age">
+        </p>
+        <input type="submit" value="Сохранить">
+    </form>
+
+    {% if people.count > 0 %}
+    <h2>Список пользователей</h2>
+    <table>
+        <thead>
+            <tr><th>Id</th><th>Имя</th><th>Boзpacт</th></tr>
+        </thead>
+
+        {% for person in people %}
+        <tr>
+            <td>{{ person.id }}</td>
+            <td>{{ person.name }}</td>
+            <td>{{ person.age }}</td>
+            <td>
+                <a href="edit/{{person.id}}">Изменить</a>
+                <a href="delete/{{person.id}}">Удалить</a>
+            </td>
+        </tr>
+        {% endfor %}
+
+    </table>
+    {% endif %}
+</body>
+</html>
